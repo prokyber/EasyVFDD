@@ -1,6 +1,6 @@
 # EasyVFDD Library
 
-Library for controling EasyVFDD desk  by providing an array of three uint8_t nums as a binary representation of display columns. User can also control built in RGB LEDs.
+A library for controlling EasyVFDD desk by providing an array of three uint8_t nums as a binary representation of display columns. User can also control the built-in RGB LEDs.
 
 ## VFDDLedColor (Enum)
 
@@ -24,28 +24,28 @@ Library for controling EasyVFDD desk  by providing an array of three uint8_t num
 
 ## EasyVFDD
 
-Constructor method that sets all necesery pins
+A constructor method that sets all necessary pins
 
-### Paramers
+### Parameters
 
-- uint8_t outputEnable - number of pin that enables voltage on desk
+- uint8_t outputEnable - number of pin that enables voltage on the desk
 - uint8_t shcp - number of shcp pin
 - uint8_t stcp - number of stcp pin
 - uint8_t dsin - number of data input pin
 
 ## SetVFDD
 
-Method used to set up shift registers of VFDDs. Don't forget to call the Latch method after to see the resaults.
+A method used to set up shift registers of the VFDDs. Don't forget to call the the Latch method afterward to apply the changes.
 
-### Parametrs
+### Parameters
 
-- `uint8_t lightValues[3]` - array of three byte sized numbers, each representing one column of display in binary (example of one number: 0b0110001)
+- `uint8_t lightValues[3]` - an array of three byte-sized numbers, each representing one column of the display in binary (e.g. number: 0b0110001)
 
-- `EasyVFDD::VFDDLedColors colors[3]` - array of three VFDDLedColors (default is threetimes white)
+- `EasyVFDD::VFDDLedColors colors[3]` - an array of three VFDDLedColors (default is three times white)
 
-- `bool voltage = true` - variable that determins if we want to let voltage in, can be used for testing stuff up (default value = true)
+- `bool voltage = true` - a variable that determines whether voltage is enabled, can be used  for testing purposes (default value = true)
 
-- `uint16_t dimming` -
+- `uint16_t dimming` - The dimming level for the LEDs (if applicable)
 
 ### Call example
 
@@ -58,19 +58,19 @@ uint8_t columns[3] = {
   0b0111111};
 
 EasyVFDD::VFDDLedColor colors[3] = {
-  EasyVFDD::Blue;
-  EasyVFDD::Red;
-  EasyVFDD::Green;
+  EasyVFDD::Blue,
+  EasyVFDD::Red,
+  EasyVFDD::Green
 };
 
 e.SetVFDD(columns, colors);
 ```
 
-Resault of this call will be that after calling the Latch() method in left coloumn only the top light will be ON and its LED will shine blue light, whole center column will be OFF and its LED will shine red light and the whole right column will be ON and its LED will shine green light
+Result of this call will be that after calling the Latch method in left column only the top light will be ON and its LED will shine blue light, whole center column will be OFF and its LED will shine red light and the whole right column will be ON and its LED will shine green light
 
 ## Latch
 
-Method that latches all shift registers. Don't forget to use the SetVFDD method to set them up first.
+A method that latches all shift registers. Don't forget to use the SetVFDD method to set them up first.
 
 ### Call example
 
